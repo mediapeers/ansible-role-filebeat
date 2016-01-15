@@ -10,8 +10,8 @@
 
 - name: Add filebeat apt repo
   apt_repository:
-  repo: "deb https://packages.elastic.co/beats/apt stable main"
-  update_cache: yes
+    repo: "deb https://packages.elastic.co/beats/apt stable main"
+    update_cache: yes
   state: present
 
 - name: Install filebeat apt package

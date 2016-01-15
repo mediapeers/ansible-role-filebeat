@@ -7,9 +7,9 @@ filebeat:
     # Each - is a prospector. Below are the prospector specific configurations
 {% for prospector in filebeat_prospectors %}
     -
-      {{ prospector | to_yaml }}
-{% endfor %}
+      {{ prospector|to_nice_yaml|indent(6) }}
 
+{% endfor %}
 
   # General filebeat configuration options
   #

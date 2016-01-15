@@ -8,7 +8,9 @@ describe "Filebeat setup" do
 
   describe file('/etc/filebeat/filebeat.yml') do
     it { should be_file }
-    its(:content) { should include("hosts: [#{ANSIBLE_VARS.fetch('filebeat_logstash_server', 'FAIL')}:#{ANSIBLE_VARS.fetch('filebeat_logstash_server', 'FAIL')}]") }
+    its(:content) {
+      should include("hosts: [\"#{ANSIBLE_VARS.fetch('filebeat_logstash_server', 'FAIL')}:#{ANSIBLE_VARS.fetch('filebeat_logstash_server_port', 'FAIL')}\"]")
+    }
   end
 
   describe service('filebeat') do

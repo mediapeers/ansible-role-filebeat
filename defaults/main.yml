@@ -6,36 +6,33 @@ filebeat_logstash_server_port: 5044
 
 # Example, overwrite this variable:
 filebeat_prospectors:
-  - {
-      paths:
-        - '/var/log/syslog'
-        - '/var/log/auth.log'
-      input_type: log
-      fields:
-        source: filebeat
-        format: syslog
-      document_type: syslog
-    }
-  - {
-      paths:
-        - '/opt/my_app1/log/production.log'
-        - '/opt/my_app2/log/production.log'
-      input_type: log
-      fields:
-        source: filebeat
-        format: my_app
-      document_type: my_app_log
-    }
-  - {
-      paths:
-        - '/var/log/nginx/*.log'
-      input_type: log
-      ignore_older: 24h
-      fields:
-        source: filebeat
-        format: nginx
-      document_type: nginx
-    }
+  -
+    paths:
+      - '/var/log/syslog'
+      - '/var/log/auth.log'
+    input_type: log
+    fields:
+      source: filebeat
+      format: syslog
+    document_type: syslog
+  -
+    paths:
+      - '/opt/my_app1/log/production.log'
+      - '/opt/my_app2/log/production.log'
+    input_type: log
+    fields:
+      source: filebeat
+      format: my_app
+    document_type: my_app_log
+  -
+    paths:
+      - '/var/log/nginx/*.log'
+    input_type: log
+    ignore_older: 24h
+    fields:
+      source: filebeat
+      format: nginx
+    document_type: nginx
 
 # Make sure the fields paths, input_type is defined for each prospector. Other things are optional. 
 # The field document_type default to 'log'.

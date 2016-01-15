@@ -8,8 +8,8 @@ filebeat_logstash_server_port: 5044
 filebeat_prospectors:
   - {
       paths:
-        - /var/log/syslog
-        - /var/log/auth.log
+        - '/var/log/syslog'
+        - '/var/log/auth.log'
       input_type: log
       fields:
         source: filebeat
@@ -18,8 +18,8 @@ filebeat_prospectors:
     }
   - {
       paths:
-        - /opt/my_app1/log/production.log
-        - /opt/my_app2/log/production.log
+        - '/opt/my_app1/log/production.log'
+        - '/opt/my_app2/log/production.log'
       input_type: log
       fields:
         source: filebeat
@@ -28,7 +28,7 @@ filebeat_prospectors:
     }
   - {
       paths:
-        - /var/log/nginx/*.log
+        - '/var/log/nginx/*.log'
       input_type: log
       ignore_older: 24h
       fields:

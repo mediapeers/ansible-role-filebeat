@@ -1,2 +1,8 @@
 ---
 # defaults file for ansible-role-filebeat
+
+filebeat_logstash_server: localhost
+filebeat_logstash_server_port: 5044
+
+filebeat_logfiles:
+  - /var/log/*/*.log

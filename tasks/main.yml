@@ -1,2 +1,31 @@
 ---
 # tasks file for ansible-role-filebeat
+
+- name: Add elastic apt repo key (for all elastic software)
+  apt_key:
+    url: "https://packages.elastic.co/GPG-KEY-elasticsearch"
+    state: present
+
+# Install filebeat as a logstash client (to deliver logs), just for demoing
+
+- name: Add filebeat apt repo
+  apt_repository:
+  repo: "deb https://packages.elastic.co/beats/apt stable main"
+  update_cache: yes
+  state: present
+
+- name: Install filebeat apt package
+  apt:
+    name: filebeat
+    state: present
+
+- name: Configure filebeat to read from logfiles and deliver to logstash
+  template:
+    src: filebeat.yml.j2
+    dest: /etc/filebeat/filebeat.yml
+  notify: restart filebeat
+
+- name: Enable filebeat on bootup and ensure it's started
+  service:
+    name: filebeat
+    enabled: yes

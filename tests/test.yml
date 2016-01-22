@@ -3,5 +3,6 @@
   become: true
   vars:
     # Just use the defaults
+    some: var
   roles:
     - { role: ansible-role-filebeat }

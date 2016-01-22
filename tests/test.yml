@@ -1,5 +1,7 @@
 ---
 - hosts: localhost
-  remote_user: root
+  become: true
+  vars:
+    # Just use the defaults
   roles:
     - { role: ansible-role-filebeat }

@@ -24,7 +24,10 @@ filebeat_logstash_server_port: 5044
 This role has no dependencies to other roles.
 
 ## Example Playbook
-This is how you can include this role in your existing playbook:
+Copy this role into the roles/mediapeers.filebeat dir in your Ansible project. Preferably add it as a submodule.
+You can also install it with `ansible-galaxy install mediapeers.filebeat`.
+Then use it like so:
+
 ```yaml
 - name: My nice play
   hosts: servers
@@ -34,7 +37,7 @@ This is how you can include this role in your existing playbook:
     - filebeat_logfiles:
       - /var/log/syslog
   roles:
-    - mpx.filebeat
+    - mediapeers.filebeat
 ```
 
 ## License

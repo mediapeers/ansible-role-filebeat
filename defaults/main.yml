@@ -1,5 +1,5 @@
 ---
-# defaults file for ansible-role-filebeat
+# defaults file for mediapeers.filebeat
 
 filebeat_logstash_server: localhost
 filebeat_logstash_server_port: 5044
@@ -34,8 +34,8 @@ filebeat_prospectors:
       format: nginx
     document_type: nginx
 
-# Make sure the fields paths, input_type is defined for each prospector. Other things are optional. 
+# Make sure the fields paths, input_type is defined for each prospector. Other things are optional.
 # The field document_type default to 'log'.
-# Set a custom one here if you want to apply differen message filters for different 
+# Set a custom one here if you want to apply differen message filters for different
 # log formats in logstash later/
 # The field `fields` just adds more metatdata to the message.

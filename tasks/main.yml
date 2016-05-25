@@ -1,5 +1,5 @@
 ---
-# tasks file for ansible-role-filebeat
+# tasks file for mediapeers.filebeat
 
 - name: Add elastic apt repo key (for all elastic software)
   apt_key:

@@ -4,6 +4,13 @@
 filebeat_logstash_server: localhost
 filebeat_logstash_server_port: 5044
 
+filebeat_logstash_tls: false
+filebeat_logstash_tls_certificate_authorities: []
+filebeat_logstash_tls_certificate:
+filebeat_logstash_tls_certificate_key:
+filebeat_logstash_tls_insecure: false
+
+
 # Example, overwrite this variable:
 filebeat_prospectors:
   -
@@ -39,3 +46,9 @@ filebeat_prospectors:
 # Set a custom one here if you want to apply differen message filters for different
 # log formats in logstash later/
 # The field `fields` just adds more metatdata to the message.
+
+
+# Extra prospectors - will be added to filebeat_prospectors list at runtime.
+# Facilitates having a base set of prospectors plus extra prospectors per host
+# or group.
+filebeat_extra_prospectors: []

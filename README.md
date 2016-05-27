@@ -20,6 +20,11 @@ filebeat_logstash_server: 'logstash.server.com'
 filebeat_logstash_server_port: 5044
 ```
 
+You can also define variable `filebeat_extra_prospectors` on a per-host or
+per-group basis.  This variable is concatenated with `filebeat_prospectors`
+when rendering the configuration template.
+
+
 ## Dependencies
 This role has no dependencies to other roles.
 

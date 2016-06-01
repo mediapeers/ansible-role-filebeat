@@ -1,11 +1,19 @@
-################### Filebeat Configuration Example #########################
+# vim:ft=ansible:
+#===============================================================================
+#
+# Filebeat Configuration
+#
+#-------------------------------------------------------------------------------
+# {{ ansible_managed }}
+#===============================================================================
+
 
 ############################# Filebeat ######################################
 filebeat:
   # List of prospectors to fetch data.
   prospectors:
     # Each - is a prospector. Below are the prospector specific configurations
-{% for prospector in filebeat_prospectors %}
+{% for prospector in filebeat_all_prospectors %}
     -
       {{ prospector|to_nice_yaml|indent(6) }}
 
@@ -31,6 +39,7 @@ filebeat:
   # The config_dir MUST point to a different directory then where the main filebeat config file is in.
   #config_dir:
 
+
 ############################# Output ##########################################
 
 # Configure what outputs to use when sending the data collected by the beat.
@@ -53,28 +62,38 @@ output:
     # top topbeat and for Filebeat to filebeat.
     #index: filebeat
 
+{% if filebeat_logstash_tls %}
     # Optional TLS. By default is off.
-    #tls:
+    tls:
+      {% if filebeat_logstash_tls_certificate_authorities %}
       # List of root certificates for HTTPS server verifications
-      #certificate_authorities: ["/etc/pki/root/ca.pem"]
+      certificate_authorities: 
+        {{ filebeat_logstash_tls_certificate_authorities | to_nice_yaml | indent(8) }}
+      {% endif %}
 
+      {% if filebeat_logstash_tls_certificate %}
       # Certificate for TLS client authentication
-      #certificate: "/etc/pki/client/cert.pem"
+      certificate: {{ filebeat_logstash_tls_certificate }}
+      {% endif %}
 
+      {% if filebeat_logstash_tls_certificate_key %}
       # Client Certificate Key
-      #certificate_key: "/etc/pki/client/cert.key"
+      certificate_key: {{ filebeat_logstash_tls_certificate_key }}
+      {% endif %}
 
       # Controls whether the client verifies server certificates and host name.
       # If insecure is set to true, all server host names and certificates will be
       # accepted. In this mode TLS based connections are susceptible to
       # man-in-the-middle attacks. Use only for testing.
-      #insecure: true
+      insecure: {{ filebeat_logstash_tls_insecure }}
+
 
       # Configure cipher suites to be used for TLS connections
       #cipher_suites: []
 
       # Configure curve types for ECDHE based cipher suites
       #curve_types: []
+{% endif %}
 
 
   ### Console output

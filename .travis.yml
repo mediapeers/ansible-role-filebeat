@@ -28,12 +28,16 @@ script:
   # Run the role/playbook with ansible-playbook.
   - "ansible-playbook -i tests/inventory tests/$SITE --connection=local"
 
-  # Run the role/playbook again, checking to make sure it's idempotent.
+  # Ouput filebeat config for debugging
+  - echo /etc/filebeat/filebeat.yml
+
+    # Run the role/playbook again, checking to make sure it's idempotent.
   - >
     ansible-playbook -i tests/inventory tests/$SITE --connection=local
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
+
 
   # Run serverspec
   - rake spec

@@ -1,8 +1,9 @@
 ---
 sudo: required
-dist: trusty
+dist: xenial
+
 language: python
-python: "2.7"
+python: "3.5"
 
 env:
   - SITE=test.yml

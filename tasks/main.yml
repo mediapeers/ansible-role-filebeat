@@ -8,9 +8,9 @@
 
 # Install filebeat as a logstash client (to deliver logs), just for demoing
 
-- name: Add filebeat apt repo
+- name: Add filebeat (Elastic) apt repo
   apt_repository:
-    repo: "deb https://packages.elastic.co/beats/apt stable main"
+    repo: "deb https://artifacts.elastic.co/packages/{{ filebeat_major_version }}/apt stable main"
     update_cache: yes
     state: present
 

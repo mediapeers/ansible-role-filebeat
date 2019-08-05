@@ -12,10 +12,12 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  - ruby -v
-  - gem install serverspec
+  # Setup serverspec as root (used for test run later)
+  - sudo apt-get install -y rub
+  - sudo ruby -v
+  - sudo gem install serverspec
   # Install Ansible.
-  - pip install ansible
+  - sudo -H pip install ansible
   - ansible --version
 
   # Add ansible.cfg to pick up roles path.
@@ -29,7 +31,7 @@ script:
   - "ansible-playbook -i tests/inventory tests/$SITE --connection=local"
 
   # Ouput filebeat config for debugging
-  - cat /etc/filebeat/filebeat.yml
+  - sudo cat /etc/filebeat/filebeat.yml
 
     # Run the role/playbook again, checking to make sure it's idempotent.
   - >
@@ -38,6 +40,5 @@ script:
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
 
-
-  # Run serverspec
-  - rake spec
+  # Run serverspec as root to also be able to access /etc/filebeat/filebeat.yml
+  - sudo rake spec

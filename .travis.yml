@@ -31,7 +31,7 @@ script:
   - "ansible-playbook -i tests/inventory tests/$SITE --connection=local"
 
   # Ouput filebeat config for debugging
-  - sudo cat /etc/filebeat/filebeat.yml
+  # - sudo cat /etc/filebeat/filebeat.yml
 
     # Run the role/playbook again, checking to make sure it's idempotent.
   - >

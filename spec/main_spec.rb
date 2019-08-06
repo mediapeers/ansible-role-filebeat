@@ -11,10 +11,10 @@ describe "Filebeat setup" do
     its(:content) {
       should include("hosts: [\"#{ANSIBLE_VARS.fetch('filebeat_logstash_server', 'FAIL')}:#{ANSIBLE_VARS.fetch('filebeat_logstash_server_port', 'FAIL')}\"]")
     }
-# TODO: fix formatting of this result string first
-#    its(:content) {
-#      should include("prospectors: #{ANSIBLE_VARS.fetch('filebeat_prospectors', { fail: 'fail' }).to_yaml}")
-#    }
+    # TODO: fix formatting of this result string first
+    its(:content) {
+      should include(ANSIBLE_VARS.fetch('filebeat_prospectors', { fail: 'fail' }).to_yaml)
+    }
   end
 
   describe service('filebeat') do

@@ -2,7 +2,14 @@
 - hosts: localhost
   become: true
   vars:
-    # Just use the defaults
-    some: var
+    filebeat_prospectors:
+      - paths:
+          - '/var/log/syslog'
+          - '/var/log/auth.log'
+        input_type: log
+        fields:
+          source: filebeat
+          format: syslog
+        document_type: syslog
   roles:
     - { role: ansible-role-filebeat }

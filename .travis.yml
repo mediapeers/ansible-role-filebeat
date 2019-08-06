@@ -40,5 +40,7 @@ script:
 #    && (echo 'Idempotence test: pass' && exit 0)
 #    || (echo 'Idempotence test: fail' && exit 1)
 
+  - systemctl status filebeat.service
+
   # Run serverspec as root to also be able to access /etc/filebeat/filebeat.yml
   - sudo rake spec

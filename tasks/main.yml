@@ -29,12 +29,4 @@
   service:
     name: filebeat
     enabled: yes
-
-- name: Pause a second
-  pause:
-    seconds: 2
-
-- name: Make sure service is running
-  service:
-    name: filebeat
     state: started

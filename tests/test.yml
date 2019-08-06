@@ -7,7 +7,7 @@
         paths:
           - '/var/log/syslog'
           - '/var/log/auth.log'
-        input_type: log
+        type: log
         fields:
           source: filebeat
           format: syslog

@@ -11,12 +11,17 @@ it on to logstash. If you want other outputters you might have to change a bunch
 Debian based Linux, tested on Ubuntu. Recent version of Ansible. Only utilized Ansible core modules.
 
 ## Role Variables
+
+Role variables you can set or overwrite:
+
 ```yaml
-# List of files to read logs from:
+# List of files to read logs from (aka inputs):
 filebeat_prospectors:
   - { paths: /var/log/*/*.log, input_type: log, document_type: log}
-
-# Logstash server to send logs to:
+# list of module packs for certain software/OS logs
+filebeat_modules:
+  - module: nginx
+# Logstash server to send logs to (logstash output):
 filebeat_logstash_server: 'logstash.server.com'
 filebeat_logstash_server_port: 5044
 filebeat_logstash_tls: false
@@ -29,7 +34,6 @@ filebeat_logstash_tls_insecure: false
 You can also define variable `filebeat_extra_prospectors` on a per-host or
 per-group basis.  This variable is concatenated with `filebeat_prospectors`
 when rendering the configuration template.
-
 
 ## Dependencies
 This role has no dependencies to other roles.

@@ -19,6 +19,6 @@ describe "Filebeat setup" do
 
   describe service('filebeat') do
     it { should be_enabled }
-    # it { should be_running }
+    it { should be_running }
   end
 end

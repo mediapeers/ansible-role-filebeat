@@ -29,4 +29,3 @@
   service:
     name: filebeat
     enabled: yes
-    state: started

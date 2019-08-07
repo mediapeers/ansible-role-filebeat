@@ -5,3 +5,6 @@
   service:
     name: filebeat
     state: restarted
+
+- name: Clean registry
+  shell: rm -r /var/lib/filebeat/registry/filebeat/

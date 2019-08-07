@@ -18,12 +18,20 @@
   apt:
     name: filebeat
     state: present
+  notify:
+    - clean registry
+    - restart filebeat
 
 - name: Configure filebeat to read from logfiles and deliver to logstash (add config file)
   template:
     src: filebeat.yml.j2
     dest: /etc/filebeat/filebeat.yml
-  notify: restart filebeat
+  notify:
+    - clean registry
+    - restart filebeat
+
+- name: Run all notified handlers before moving on
+  meta: flush_handlers
 
 - name: Enable filebeat on bootup and ensure it's started
   service:

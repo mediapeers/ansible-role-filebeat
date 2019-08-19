@@ -27,7 +27,6 @@
     src: filebeat.yml.j2
     dest: /etc/filebeat/filebeat.yml
   notify:
-    - clean registry
     - restart filebeat
 
 - name: Run all notified handlers before moving on

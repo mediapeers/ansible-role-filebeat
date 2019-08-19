@@ -7,4 +7,6 @@
     state: restarted
 
 - name: clean registry
-  shell: rm -r /var/lib/filebeat/registry/filebeat/
+  file:
+    path: /var/lib/filebeat/registry/filebeat/
+    state: absent

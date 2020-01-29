@@ -42,3 +42,6 @@ script:
 
   # Ouput filebeat config for debugging
   - sudo cat /etc/filebeat/filebeat.yml
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

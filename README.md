@@ -1,3 +1,5 @@
+**Moved to https://github.com/mediafellows/ansible-role-filebeat**
+
 [![Build Status](https://travis-ci.com/mediapeers/ansible-role-filebeat.svg?branch=master)](https://travis-ci.com/mediapeers/ansible-role-filebeat)
 
 # Ansible role to install & configure filebeat
